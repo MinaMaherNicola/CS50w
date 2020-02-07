@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  padding: 1rem 2rem;
+  display: inline-block;
+  outline: none;
+}
+.btn__primary {
+  background-color: black;
+  color: #fff;
+  transition: all 0.4s;
+}
+.btn__primary:hover {
+  background-color: #fff;
+  color: #000;
+}
+.btn__submit {
+  border: 1px solid #dfcdc3;
+  background-color: #fff;
+  color: #333;
+  transition: all 0.2;
+}
+.btn__submit:hover {
+  background-color: #e9e9e9;
+}
+
+.login {
+  font-size: 2rem;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  background: url("/static/img/ppl-1.jpeg") no-repeat center center/cover;
+  position: relative;
+}
+.login .heading {
+  text-align: center;
+  padding: 1rem;
+}
+.login__form {
+  width: 50vw;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  opacity: 0.9;
+  background: linear-gradient(to right, #3c4245, #5f6769);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  height: 50vh;
+  color: #f4f4f4;
+  border-radius: 0.5rem;
+}
+.login .form__group {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+}
+.login .form__group input[type=text] {
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+  display: block;
+  margin: 1rem auto;
+  text-align: center;
+  width: 50rem;
+  height: 3.2rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+}
+.login .form__group input:focus {
+  outline: none;
+  border-bottom: 2px solid #719192;
+}
+.login .form__group input[type=submit] {
+  margin: 0 40%;
+  margin-top: 2rem;
+}
+.login .form__group input::placeholder {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+}
+
+.nav {
+  background: #3c4245;
+  color: #f4f4f4;
+  font-size: 2rem;
+  padding: 1rem;
+  box-shadow: 0rem 0.1rem 1rem black;
+}
+.nav__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__container a {
+  text-decoration: none;
+  color: #f4f4f4;
+}
+.nav__button {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+.budget__totals {
+  background: url("/static/img/nat-1.jpg") center center/cover no-repeat;
+  padding: 5rem;
+  font-size: 2rem;
+  text-align: center;
+}
+.budget__totals--total {
+  display: inline-block;
+  padding: 1rem 7rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f4f4f4;
+  margin-bottom: 6rem;
+}
+.budget__totals--detailed .total__incomes {
+  padding: 0.5rem 7rem;
+  display: inline-block;
+  margin-right: 1rem;
+}
+.budget__totals--detailed .total__expenses {
+  padding: 0.5rem 7rem;
+  display: inline-block;
+}
+
+.items__form {
+  width: 100%;
+  height: 8rem;
+  background: #f4f4f4;
+  position: relative;
+}
+.items__form .container {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+.items__form #selectionValue {
+  padding: 1rem;
+  border: 1px solid #dfcdc3;
+  margin-right: 1rem;
+  outline: none;
+}
+.items__form input {
+  outline: none;
+  padding: 1rem;
+  border: 1px solid #dfcdc3;
+  margin-right: 1rem;
+}
+.items__form input[type=text] {
+  width: 30rem;
+  font-family: "Roboto", sans-serif;
+}
+.items__form input[type=number] {
+  width: 10rem;
+  font-family: "Roboto", sans-serif;
+}
+.items__form input:focus,
+.items__form #selectionValue:focus {
+  border: 1px solid #719192;
+}
+
+.items {
+  padding: 2rem;
+}
+.items__container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  text-align: center;
+}
+.items__container h3 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: normal;
+}
+.items__container .incomes__list,
+.items__container .expenses__list {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.items__container .income__item,
+.items__container .expense__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+  margin: 0 auto;
+  border-bottom: 1px solid #dfcdc3;
+  padding: 1rem 1rem;
+}
+.items__container .income__item a,
+.items__container .expense__item a {
+  text-decoration: none;
+  color: #da2d2d;
+}
+
+.earning {
+  background: #91bd3a !important;
+  color: #f4f4f4 !important;
+}
+
+.losing {
+  background: #da2d2d !important;
+  color: #f4f4f4 !important;
+}
+
+.text-earning {
+  color: #91bd3a;
+}
+
+.text-losing {
+  color: #da2d2d;
+}
+
+.remove-item a {
+  transition: all 0.7s;
+}
+
+.remove-item:hover a {
+  transform: rotate(70deg);
+}
+
+/*# sourceMappingURL=style.css.map */

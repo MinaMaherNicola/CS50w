@@ -1,0 +1,96 @@
+{% extends "users/base.html" %}
+
+{% block title%}
+Menu
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <!--Navbar--->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!--Navbar brand-->
+    <a class="navbar-brand" href="#">Pinocchio's</a>
+    <!--Collapse button-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'indexf' 1 %}"#>Pizza</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'indexf' 2 %}">Subs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'indexf' 4 %}">Salads</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'indexf' 3 %}">Pasta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'indexf' 5 %}">Dinner Platters</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=#>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="row">
+    <div class="col-sm-6">
+      {% if type%}
+      <h2>{{ type.description}}</h2>
+      {% else %}
+      <h2>Menu</h2>
+      {% endif %}
+    </div>
+    <div class="col-sm-6">
+      <div class="text-right">
+        <h6>Logged in as {{ user.username }}</h6>
+        <h6><a href="{% url 'review_order' %}">Cart</a>&nbsp&nbsp<a href="{% url 'profile' user.id %}">Edit Profile</a>&nbsp&nbsp<a href="{% url 'logout' %}">Logout</a></h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container" width="60%">
+  <div class="col-sm-10">
+    <div class="d-flex">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Click on any item below to start your order:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Reads menu information from Python list published by views.py -->
+          {% for item in items %}
+          <!-- shows each menu item in a table, where each item
+          has a link to a custom URL consisting of book id
+          this transfers to the details route in views.py -->
+          <tr class='clickable-row' data-href="{% url 'item' item.id %}">
+              <td>{{ item}}</td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+      });
+  });
+</script>
+
+{% endblock %}

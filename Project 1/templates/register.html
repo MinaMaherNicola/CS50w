@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+
+{% block main %}
+<form action="/register" method="post" style="margin-top: 7rem;">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" placeholder="Enter username">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Confirm Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="confirmpassword" placeholder="Confirm Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input autocomplete="off" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Enter email">
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button> 
+</form>
+{% endblock %}

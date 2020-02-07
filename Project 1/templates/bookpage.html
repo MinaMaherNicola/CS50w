@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+
+<h1 style="margin-top: 5rem; margin-bottom: 1px;">{{ data[0] }}</h1>
+<small style="color: #b6b3b3">ISBN: {{ data[1] }}</small>
+<div style="width: 100%; border-top: 3px #f0eded solid;"></div>
+<h5 style="margin-top: 1rem;">Author: {{ data[2] }}</h5>
+<h5 style="margin-top: 1rem;">Puplish year of the book: {{ data[3] }}</h5>
+<h6 style="margin-top: 1rem;">Average rating of the book: {{ data[4] }}</h6>
+
+<div style="width: 100%; border-top: 3px #f0eded solid; margin-top: 2rem;"></div>
+<h3 style="margin: 1rem 0rem;">Submit your own review now!</h3>
+
+<form action="/submitReview" method="POST">
+    <textarea name="review" id="review" cols="150" rows="10"></textarea>
+    <label style="margin: 2rem 0rem;">Book Rate: </label>
+    <select name="rating">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <button style="display: block !important;" type="submit" class="btn btn-primary">Submit Review</button>
+</form>
+
+<div style="width: 100%; border-top: 3px #f0eded solid; margin-top: 2rem;"></div>
+<h3 style="margin: 1rem 0rem;">Users Reviews</h3>
+
+    {% if reviews %}
+        {% for review in reviews %}
+            <div style="margin: 1rem 0rem; padding: 1rem; border: 2px #e2e1e1 solid;">
+                <h5>{{ review[0] }}'s review for {{ review[1] }}: </h5>
+                <p style="margin: 0rem 0; padding: 0.5rem 0;">"{{ review[2] }}"</p>
+                <p style="margin: 0rem 0; padding: 0.5rem 0;">Rated the book {{ review[3] }} out of 5</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

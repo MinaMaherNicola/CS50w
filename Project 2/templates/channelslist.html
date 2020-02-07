@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Channels List
+{% endblock %}
+
+{% block main %}
+    {% if channelsList %}
+        {% for channel in channelsList %}
+        <div data-index={{loop.index}}>
+            <li class="channel" style="display:inline;" data-index={{loop.index}}><a href={{ url_for('channel') }}>{{ channel }}</a></li>
+            <a href={{ url_for('channels') }} style="color: red; text-decoration: none; font-weight: bold;" class="remove">X</a>
+        </div>
+        {% endfor %}
+    {% endif %}
+    
+    <form action="/createChannel" method="post" style="margin-top: 4rem;">
+        <div class="form-group">
+            <label for="channel">Channel Name</label>
+            <input type="text" class="form-control" autocomplete="off" name="createChannelName" id="channel" placeholder="Create your own channel">
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+{% endblock %}
+
+{% block js %}
+<script src="../static/channelList.js"></script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="form-group">
+                <label for="displayName">Display Name:</label>
+                <input type="text" class="form-control" id="displayName" name="displayName" aria-describedby="displayNameHelp" placeholder="Enter display name">
+        </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+{% endblock %}

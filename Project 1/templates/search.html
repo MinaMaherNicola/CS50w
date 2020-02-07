@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <form action="/search" method="post" style="margin-top: 7rem;">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Book</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="search" placeholder="Book Title, ISBN or Book Author">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    {% if success %}
+        <small>Review Submitted Successfully</small>
+    {% endif %}
+{% endblock %}

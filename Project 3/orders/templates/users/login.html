@@ -1,0 +1,47 @@
+{% extends "users/base.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+
+{% block body %}
+{% if message %}
+<div>
+  <!-- for error messages -->
+  {{message}}
+</div>
+{% endif %}
+
+  <!-- Form displays a user login screen using bootstrap -->
+    <div class="container" width="80%">
+      <div class="col-sm-6" style="height:50px;"></div>
+      <div class="col-sm-6">
+        <div class="col-sm-6" style="height:50px;"></div>
+        <form action="{% url 'login' %}" method="post">
+          <!-- validation token -->
+          {% csrf_token %}
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <label for="inputUsername" class="sr-only">Username</label>
+            <input type="text" id="username" class="form-control" name="username" placeholder="Username" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="password" class="form-control" name="password" placeholder="Password" required>
+            <div class="checkbox">
+              <small>
+              <label>
+                <input type="checkbox" value="remember-me"><small>&nbsp; Remember me</small></label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          </small>
+          </form>
+
+          <!-- Trouble logging in links -->
+            <div class="col-xs-12" style="height:50px;"></div>
+              <small>
+              <a class="dropdown-item" href={% url "new_user" %}><medium>New around here? Sign up</a>
+              <a class="dropdown-item" href="#">Forgot password?</medium></a>
+            </small>
+
+    </div> <!-- /container -->
+
+{% endblock %}

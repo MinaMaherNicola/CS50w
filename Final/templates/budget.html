@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" media="screen and (max-width: 768px)" href="../static/mobile.css">
+    <title>Budget Manager</title>
+</head>
+
+<body>
+    <nav class="nav">
+        <ul class="nav__container">
+            <li class="nav__button"><a href="#">Budget Manager</a></li>
+            <li class="nav__button"><a href="url_for(logout)">Logout of {{ username }}</a></li>
+        </ul>
+    </nav>
+
+    <section class="budget">
+        <div class="budget__totals">
+            {% if totalBudget %}
+                <p class="budget__totals--total">Available Budget: ${{ totalBudget }}</p>
+            {% else %}
+                <p class="budget__totals--total">Available Budget: $00.00</p>
+            {% endif %}
+            <div class="budget__totals--detailed">
+                <div class="total__incomes earning">
+                    {% if totalIncome %}
+                        <p class="total__Income--value">Total Income: +${{ totalIncome }}</p>
+                    {% else %}
+                        <p class="total__Income--value">Total Income: +$00.00</p>
+                    {% endif %}
+                </div>
+                <div class="total__expenses losing">
+                    {% if totalExpense %}
+                        <p class="total__Expense--value">Total Expense: -${{ totalExpense }}</p>
+                    {% else %}
+                        <p class="total__Expense--value">Total Expense: -$00.00</p>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="items__form">
+        <div class="container">
+            <select id="selectionValue">
+                <option class="income-selection" value="income">+</option>
+                <option class="expense-selection" value="expense">-</option>
+            </select>
+            <input type="text" placeholder="Add description." id="description" required>
+            <input type="number" placeholder="Value" id="value" required>
+            <button class="submitToDOM btn btn__submit">Submit</button>
+        </div>
+    </div>
+
+    <div class="items">
+        <div class="items__container">
+            <div class="items__incomes">
+                <h3 class="text-earning">Incomes</h3>
+                <ul class="incomes__list">
+
+                    {% if incomes %}
+                        {% for income in incomes %}
+                            <li class="income__item" id={{loop.index}}>
+                                {{ income }}
+                                <span class="text-earning">
+                                    +${{incomesValue[loop.index - 1]}}
+                                    <a class="remove-item" href="#">&#10005;</a>
+                                </span>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <!-- <li class="income__item">
+                        Car 
+                        <span class="text-earning">
+                            +$500
+                            <a class="remove-item" href="#">&#10005;</a>
+                        </span>
+                    </li> -->
+                    
+                </ul>
+            </div>
+            <div class="items__expenses">
+                <h3 class="text-losing">Expenses</h3>
+                <ul class="expenses__list">
+
+                    {% if expenses %}
+                        {% for expense in expenses %}
+                            <li class="expense__item" id={{loop.index}}>
+                                {{ expense }}
+                                <span class="text-losing">
+                                    -${{ expensesValue[loop.index - 1]}}
+                                    <a class="remove-item" href="#">&#10005;</a>
+                                </span>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+
+                    <!-- <li class="expense__item">
+                        Tar 
+                        <span class="text-losing">
+                            -$600 
+                            <a class="remove-item" href="#">&#10005;</a>
+                        </span>
+                    </li> -->
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf-8">
+    var socket = io();
+    socket.on('connect', function() {
+        socket.emit('my event', {data: 'I\'m connected!'});
+    });
+</script>
+<script src="/static/js/main.js"></script>
+</html>
