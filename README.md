@@ -9,4 +9,4 @@ Project 2: In this project, I built an online messaging service using Flask, sim
 
 Project 3: In this project, I built a web application for handling a pizza restaurant’s online orders. Users will be able to browse the restaurant’s menu, add items to their cart, and submit their orders. Meanwhile, the restaurant owners will be able to add and update menu items, and view orders that have been placed.
 
-Project 4: The purpose of the website is to help the individual to manage and keep track of incomes and expenses.
+Project 4: The purpose of the website is to help the individual to manage and keep track of incomes and expenses
